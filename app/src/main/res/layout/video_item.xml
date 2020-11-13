@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/videoImg"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/channelTitleTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/downloadBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/channelTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="20dp"
+        android:maxLines="2"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/publishedTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/videoImg"
+        app:layout_constraintTop_toBottomOf="@+id/videoImg"
+        tools:text="Dave - Funky Friday (ft. Fredo)" />
+
+    <TextView
+        android:id="@+id/publishedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/videoImg"
+        app:layout_constraintTop_toBottomOf="@+id/channelTitleTextView"
+        tools:text="Published at 18/09/2020" />
+
+    <TextView
+        android:id="@+id/cachedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:text="Cached"
+        android:textColor="#ff0000"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/publishedTextView"
+        app:layout_constraintTop_toBottomOf="@+id/channelTitleTextView" />
+
+    <ImageView
+        android:id="@+id/downloadBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/videoImg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/download_img" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

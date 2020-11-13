@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.cachetube.ui.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_nowPlayingFragment"
+            app:destination="@id/nowPlayingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nowPlayingFragment"
+        android:name="com.example.cachetube.ui.MyPlayerFragment"
+        android:label="NowPlayingFragment" >
+        <argument
+            android:name="playerStarted"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="isFavouriteSelected"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="isPlaylistStarted"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="playlistSent"
+            app:argType="com.example.cachetube.data.Playlist"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/mySongsFragment"
+        android:name="com.example.cachetube.ui.MySongsFragment"
+        android:label="FavouritesFragment" >
+        <action
+            android:id="@+id/action_mySongsFragment_to_nowPlayingFragment"
+            app:destination="@id/nowPlayingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.example.cachetube.ui.FavouritesFragment"
+        android:label="FavouritesFragment" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_nowPlayingFragment2"
+            app:destination="@id/nowPlayingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playlistsFragment"
+        android:name="com.example.cachetube.ui.PlaylistsFragment"
+        android:label="PlaylistsFragment" >
+        <action
+            android:id="@+id/action_playlistsFragment_to_addPlaylistFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/addPlaylistFragment" />
+        <action
+            android:id="@+id/action_playlistsFragment_to_singlePlaylistFragment"
+            app:destination="@id/singlePlaylistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPlaylistFragment"
+        android:name="com.example.cachetube.ui.AddPlaylistFragment"
+        android:label="AddPlaylistFragment" >
+        <action
+            android:id="@+id/action_addPlaylistFragment_to_playlistsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:destination="@id/playlistsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singlePlaylistFragment"
+        android:name="com.example.cachetube.ui.SinglePlaylistFragment"
+        android:label="SinglePlaylistFragment" >
+        <argument
+            android:name="playlist"
+            app:argType="com.example.cachetube.data.Playlist" />
+        <action
+            android:id="@+id/action_singlePlaylistFragment_to_playlistsFragment"
+            app:destination="@id/playlistsFragment" />
+        <action
+            android:id="@+id/action_singlePlaylistFragment_to_nowPlayingFragment"
+            app:destination="@id/nowPlayingFragment" />
+    </fragment>
+</navigation>
