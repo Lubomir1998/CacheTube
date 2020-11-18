@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CacheTube</string>
+    <string name="channelName">name</string>
+    <string name="channelDesc">desc</string>
+</resources>

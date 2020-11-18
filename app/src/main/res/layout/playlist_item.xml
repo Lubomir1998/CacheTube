@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#fff"
+    android:background="@color/backRound"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -15,6 +15,7 @@
         android:layout_marginTop="8dp"
         android:maxLines="1"
         android:textSize="24sp"
+        android:textColor="@color/desctext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/listSize"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,7 +27,7 @@
         android:layout_height="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="#DFDBE1"
+        android:background="@color/desctext"
         app:layout_constraintTop_toBottomOf="@+id/playlistTextView"
         />
 
@@ -38,6 +39,7 @@
         android:layout_marginTop="8dp"
         tools:text="3"
         android:textSize="24sp"
+        android:textColor="@color/desctext"
         app:layout_constraintBottom_toTopOf="@+id/imageView33"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

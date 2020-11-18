@@ -23,9 +23,11 @@
         android:id="@+id/bottomNavMenu"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:background="#fff"
+        android:background="@color/bottomnavbackround"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />

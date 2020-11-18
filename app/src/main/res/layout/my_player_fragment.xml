@@ -8,6 +8,7 @@
         android:id="@+id/video_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/backRound"
         app:controller_layout_id="@layout/custom_player_layout"
         app:layout_constraintBottom_toTopOf="@+id/space"
         app:layout_constraintEnd_toEndOf="parent"

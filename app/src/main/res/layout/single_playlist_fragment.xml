@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backRound">
 
     <TextView
         android:id="@+id/playlistname"
@@ -13,7 +14,7 @@
         android:layout_marginTop="8dp"
         tools:text="TextView"
         android:textSize="24sp"
-        android:textColor="#000"
+        android:textColor="@color/text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -6,10 +6,12 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="bluee">#42BAFC</color>
     <color name="white">#fff</color>
-    <color name="backRound">#fff</color>
-    <color name="backRoundEdit">#fff</color>
-    <color name="text">#000</color>
-    <color name="desctext">#808080</color>
-    <color name="bottomnavbackround">#fff</color>
-    <color name="addplaylistbackround">#DFDBE1</color>
+
+    <color name="backRound">#3E3B40</color>
+    <color name="text">#fff</color>
+    <color name="desctext">#EAE9EC</color>
+    <color name="backRoundEdit">#3E3B40</color>
+    <color name="bottomnavbackround">#000</color>
+    <color name="addplaylistbackround">#3E3B40</color>
+
 </resources>

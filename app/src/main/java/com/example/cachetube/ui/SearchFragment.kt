@@ -3,7 +3,9 @@ package com.example.cachetube.ui
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Environment
@@ -14,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,18 +43,19 @@ import java.io.InputStream
 import java.net.MalformedURLException
 import java.net.URL
 import java.net.URLConnection
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.search_fragment) {
 
     private val TAG = "SearchFragment"
-    private val API_KEY = "alabala"
+    private val API_KEY = "a"
     private lateinit var binding: SearchFragmentBinding
     private val model: SearchViewModel by viewModels()
     private lateinit var listener: VideoAdapter.OnVideoClickedListener
 
-
+    var isNightMode = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,6 +68,19 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val shpr = requireActivity().getSharedPreferences("night", Context.MODE_PRIVATE)
+        isNightMode = shpr.getBoolean("mode", false)
+
+        nightMode(isNightMode)
+
+        binding.nightModeBtn.setOnClickListener {
+            isNightMode = !isNightMode
+            nightMode(isNightMode)
+
+            val sharedPreferences = requireActivity().getSharedPreferences("night", Context.MODE_PRIVATE)
+            sharedPreferences.edit().putBoolean("mode", isNightMode).apply()
+        }
 
         listener = object: VideoAdapter.OnVideoClickedListener{
             override fun onVideoClicked(video: Video) {
@@ -109,9 +126,14 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         // onViewCreated
     }
 
-
-
-
+    private fun nightMode(isNightMode: Boolean){
+        if(isNightMode){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
 
 
     private fun searchQuery(){

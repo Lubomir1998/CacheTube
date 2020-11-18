@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backRound">
 
     <TextView
         android:id="@+id/textView"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Search"
-        android:textColor="#000"
+        android:textColor="@color/text"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,11 +44,13 @@
             android:drawableStart="@drawable/search_img"
             android:drawablePadding="30dp"
             android:hint="Search youtube..."
+            android:textColorHint="@color/desctext"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:maxLines="1"
             android:paddingStart="7dp"
             android:textSize="16sp"
+            android:textColor="@color/text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -108,6 +111,15 @@
         android:text="Something went wrong"
         android:layout_marginBottom="56dp" />
 
+    <ImageView
+        android:id="@+id/nightModeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/night_mode_btn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
