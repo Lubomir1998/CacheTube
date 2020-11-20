@@ -78,7 +78,6 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
 
         binding.nightModeBtn.setOnClickListener {
             isNightMode = !isNightMode
-            sendIntent()
             nightMode(isNightMode)
             Log.d(TAG, "**********buttonClick: $isNightMode")
             val sharedPreferences = requireActivity().getSharedPreferences("night", Context.MODE_PRIVATE)
@@ -138,9 +137,6 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         }
     }
 
-    private fun sendIntent(){
-        startActivity(Intent(requireContext(), MainActivity::class.java))
-    }
 
     private fun searchQuery(){
         val searchedWord = binding.searchEditText.text.toString()

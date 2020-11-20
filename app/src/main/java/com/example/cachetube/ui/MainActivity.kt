@@ -36,11 +36,6 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val sh = getSharedPreferences("night", Context.MODE_PRIVATE)
-        if(sh.getBoolean("mode", false)){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            binding.bottomNavMenu.setBackgroundColor(Color.BLACK)
-        }
 
         if (!checkPermissionForReadExternalStorage()) {
             try {
@@ -62,24 +57,6 @@ class MainActivity : AppCompatActivity() {
 
         openPlayerWhenNotificationIsTapped()
 
-    }
-
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
-//        val currentNightMode = newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK
-//
-//        when (currentNightMode) {
-//            Configuration.UI_MODE_NIGHT_NO -> {
-//                recreate()
-//            }
-//            Configuration.UI_MODE_NIGHT_YES -> {
-//                recreate()
-//            }
-//        }
-        recreate()
-        Log.d(TAG, "***************onConfigurationChanged: recreate")
     }
 
 
@@ -115,7 +92,10 @@ class MainActivity : AppCompatActivity() {
             try {
                 navHostFragment.findNavController().navigate(action)
             }catch (e: Exception){}
+            intent.action = "launcher"
         }
+
+        Log.d(TAG, "*****************************openPlayerWhenNotificationIsTapped: ${intent.action}")
     }
 
 
