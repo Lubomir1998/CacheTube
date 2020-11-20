@@ -6,6 +6,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Environment
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import at.huber.youtubeExtractor.VideoMeta
 import at.huber.youtubeExtractor.YouTubeExtractor
 import at.huber.youtubeExtractor.YtFile
+import com.example.cachetube.MusicService
 import com.example.cachetube.R
 import com.example.cachetube.adapter.VideoAdapter
 import com.example.cachetube.data.Video
@@ -76,8 +78,9 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
 
         binding.nightModeBtn.setOnClickListener {
             isNightMode = !isNightMode
+            sendIntent()
             nightMode(isNightMode)
-
+            Log.d(TAG, "**********buttonClick: $isNightMode")
             val sharedPreferences = requireActivity().getSharedPreferences("night", Context.MODE_PRIVATE)
             sharedPreferences.edit().putBoolean("mode", isNightMode).apply()
         }
@@ -135,6 +138,9 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         }
     }
 
+    private fun sendIntent(){
+        startActivity(Intent(requireContext(), MainActivity::class.java))
+    }
 
     private fun searchQuery(){
         val searchedWord = binding.searchEditText.text.toString()
@@ -381,17 +387,6 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -191,7 +191,7 @@ class MusicService: Service() {
                     notificationId: Int,
                     dismissedByUser: Boolean
                 ) {
-                    //stopSelf()
+//                    stopSelf()
                 }
             }
         )
@@ -201,6 +201,7 @@ class MusicService: Service() {
 
         return START_STICKY
     }
+
 
 
 

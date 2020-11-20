@@ -1,11 +1,17 @@
 package com.example.cachetube.ui
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -15,7 +21,8 @@ import com.example.cachetube.data.Playlist
 import com.example.cachetube.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.File
+
+private const val TAG = "MainActivity"
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -28,6 +35,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        val sh = getSharedPreferences("night", Context.MODE_PRIVATE)
+        if(sh.getBoolean("mode", false)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            binding.bottomNavMenu.setBackgroundColor(Color.BLACK)
+        }
 
         if (!checkPermissionForReadExternalStorage()) {
             try {
@@ -52,28 +65,56 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
 
+//        val currentNightMode = newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK
+//
+//        when (currentNightMode) {
+//            Configuration.UI_MODE_NIGHT_NO -> {
+//                recreate()
+//            }
+//            Configuration.UI_MODE_NIGHT_YES -> {
+//                recreate()
+//            }
+//        }
+        recreate()
+        Log.d(TAG, "***************onConfigurationChanged: recreate")
+    }
 
 
     override fun onDestroy() {
         super.onDestroy()
 
-        val intent = Intent(this, MusicService::class.java)
-        stopService(intent)
+        if(isFinishing) {
+            val intent = Intent(this, MusicService::class.java)
+            stopService(intent)
+        }
+
     }
+
+
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 
         openPlayerWhenNotificationIsTapped()
+        Log.d(TAG, "***************onNewIntent: ")
     }
 
 
 
     private fun openPlayerWhenNotificationIsTapped(){
         if(intent.action == "notification_tap"){
-            val action = SearchFragmentDirections.actionSearchFragmentToNowPlayingFragment(false, 0, false, false, Playlist("" , mutableListOf()))
-            navHostFragment.findNavController().navigate(action)
+            val action = SearchFragmentDirections.actionSearchFragmentToNowPlayingFragment(
+                false, 0, false, false, Playlist(
+                    "",
+                    mutableListOf()
+                )
+            )
+            try {
+                navHostFragment.findNavController().navigate(action)
+            }catch (e: Exception){}
         }
     }
 
@@ -82,7 +123,8 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun requestPermissionForReadExternalStorage() {
-        ActivityCompat.requestPermissions(this,
+        ActivityCompat.requestPermissions(
+            this,
             arrayOf(
                 android.Manifest.permission.READ_EXTERNAL_STORAGE,
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE

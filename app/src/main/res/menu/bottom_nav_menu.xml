@@ -16,7 +16,7 @@
     <item
         android:id="@+id/nowPlayingFragment"
         android:icon="@drawable/headphones_img"
-        android:title="Now playing"
+        android:title="Now Playing"
         />
 
     <item
@@ -28,7 +28,7 @@
     <item
         android:id="@+id/mySongsFragment"
         android:icon="@drawable/now_playing_img"
-        android:title="My videos"
+        android:title="My Videos"
         />
 
 

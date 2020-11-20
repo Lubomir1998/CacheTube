@@ -6,6 +6,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.os.IBinder
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
