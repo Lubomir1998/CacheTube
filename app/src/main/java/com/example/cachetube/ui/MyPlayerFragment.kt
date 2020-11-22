@@ -103,7 +103,7 @@ class MyPlayerFragment: Fragment(R.layout.my_player_fragment) {
             if(mService?.videosList != null){
                 val song: File = mService?.videosList!![mService?.player!!.currentWindowIndex]
 
-                val dialog = AlertDialog.Builder(requireActivity(), android.R.style.Theme_Light_NoTitleBar_Fullscreen).create()
+                val dialog = AlertDialog.Builder(requireActivity(), R.style.CustomAlertDialog).create()
                 dialog.setView(mBinding.root)
 
                 mBinding.backBtn.setOnClickListener {

@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        val sh = getSharedPreferences("night", Context.MODE_PRIVATE)
+        if(sh.getBoolean("mode", false)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            binding.bottomNavMenu.setBackgroundColor(Color.BLACK)
+        }
 
         if (!checkPermissionForReadExternalStorage()) {
             try {
@@ -57,6 +62,12 @@ class MainActivity : AppCompatActivity() {
 
         openPlayerWhenNotificationIsTapped()
 
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+
+        recreate()
     }
 
 

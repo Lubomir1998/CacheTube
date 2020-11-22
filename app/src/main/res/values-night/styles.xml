@@ -7,8 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="CustomAlertDialog" parent="android:Theme.NoTitleBar.Fullscreen">
         <item name="android:windowBackground">@drawable/dialog_shape</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
 </resources>
