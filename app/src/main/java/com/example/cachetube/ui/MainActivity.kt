@@ -64,11 +64,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
-        recreate()
-    }
+//    override fun onConfigurationChanged(newConfig: Configuration) {
+//        super.onConfigurationChanged(newConfig)
+//
+//        recreate()
+//    }
 
 
     override fun onDestroy() {
@@ -77,7 +77,10 @@ class MainActivity : AppCompatActivity() {
         if(isFinishing) {
             val intent = Intent(this, MusicService::class.java)
             stopService(intent)
+            Log.d(TAG, "**************onDestroy: $isFinishing")
         }
+
+        Log.d(TAG, "********onDestroy: outside if")
 
     }
 
@@ -87,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         super.onNewIntent(intent)
 
         openPlayerWhenNotificationIsTapped()
-        Log.d(TAG, "***************onNewIntent: ")
+//        Log.d(TAG, "***************onNewIntent: ")
     }
 
 
@@ -106,7 +109,7 @@ class MainActivity : AppCompatActivity() {
             intent.action = "launcher"
         }
 
-        Log.d(TAG, "*****************************openPlayerWhenNotificationIsTapped: ${intent.action}")
+//        Log.d(TAG, "*****************************openPlayerWhenNotificationIsTapped: ${intent.action}")
     }
 
 

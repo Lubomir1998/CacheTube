@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme"
         tools:targetApi="q">
         <activity android:name=".ui.MainActivity"
-            android:configChanges="orientation|screenSize|uiMode">
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
